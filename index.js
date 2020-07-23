@@ -17,6 +17,17 @@ const calendar = require('./calendar');
 const docs = require('./docs');
 let app = express();
 
+app.get('/', (req, res)=>{
+    res.end(`
+        <html>
+            <body>
+                <h1>CTRL ALT TEC API</h1>
+                Más info en <a href="https://github.com/ctrl-alt-tec/API">https://github.com/ctrl-alt-tec/API</a>
+            </body>
+        </html>
+    `)
+})
+
 app.get('/grupoestudiantil/miembrosybits/miembros', async (req, res)=>{
     let data = await sheets({id: files.grupoestudiantil.miembros})
     res.json(data.rows)
@@ -48,8 +59,8 @@ app.get('/contenido/posts/:post', async (req, res)=>{
     }
 })
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+app.listen((process.env.PORT || 3000), function () {
+    console.log('Example app listening on port' + (process.env.PORT || 3000));
 });
 
 

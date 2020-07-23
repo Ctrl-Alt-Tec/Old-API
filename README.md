@@ -2,6 +2,8 @@
 
 Ctrl Alt Tec se creó con el objetivo de hacer la programación accesible para todas y todos, de una forma diferente a las clases convencionales, con diferentes actividades y proyectos. Tenemos metas ambiciosas y para ello será necesario contar con herramientas que estén a la altura para ayudarnos en la toma de decisiones. Proponemos crear una API (Application Programming Interface) a modo de que la información pueda ser leída (y escrita) y que pueda integrarse fácilmente con diferentes servicios.
 
+La dirección base de la API es `https://ctrl-alt-tec.herokuapp.com`
+
 ## Rutas
 
 **GRUPO ESTUDIANTIL**
