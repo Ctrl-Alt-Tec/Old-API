@@ -1,0 +1,25 @@
+{
+  "name": "ctrl-alt-tec-api",
+  "version": "1.0.0",
+  "description": "Node JS server that connects to google spreadsheets and allows to read data in json format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-alt-tec/api.git"
+  },
+  "author": "Ctrl Alt Tec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ctrl-alt-tec/api/issues"
+  },
+  "homepage": "https://github.com/ctrl-alt-tec/api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ical2json": "^3.0.0",
+    "jsdom": "^16.3.0",
+    "request": "^2.88.2"
+  }
+}
