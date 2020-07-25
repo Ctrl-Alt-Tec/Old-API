@@ -8,6 +8,11 @@ let files = {
     },
     contenido: {
         posts: '1LvOiUOBqpv8YLyQmmsKb3d29_H0z3aXYSgZEnbbotx8'
+    },
+    colab: {
+        quanta: {
+            blog: '1E6rBa4F5gRIvT3Bw6uAgNC7pJtVs9jX30MvymE1iJ-g'
+        }
     }
 }
 
@@ -61,6 +66,28 @@ app.get('/contenido/posts/:post', async (req, res)=>{
         res.end(file)
     } else {
         res.end("404. Not found")
+    }
+})
+
+
+app.get('/colab/quanta/blog', async (req, res)=>{
+    let data = await sheets({id: files.colab.quanta.blog});
+    let posts = data.rows.map(post=>({
+        ...post, 
+        url: 'https://ctrl-alt-tec.herokuapp.com/colab/quanta/blog/'+post.slug
+    }));
+    res.json(posts);
+})
+
+app.get('/colab/quanta/blog/:post', async (req, res)=>{
+    let data = await sheets({id: files.colab.quanta.blog});
+    let post = data.rows.find(l=>l.slug===req.params.post);
+    if(post!=undefined){
+        let file = await docs(post.id)
+        res.set({ 'content-type': 'text/html; charset=utf-8' });
+        res.end(file)
+    } else {
+        res.end("4olk")
     }
 })
 
