@@ -7,7 +7,12 @@ module.exports = (id)=>{
         request(url, (error, response, body)=>{
             if(error) return error;
             let dom = new JSDOM(response.body)
-            resolve(dom.window.document.querySelector('#contents').innerHTML)
+            resolve(`
+                ${dom.window.document.querySelector('head style').outerHTML}
+                <article>${
+                    dom.window.document.querySelector('#contents').innerHTML
+                }</article>
+            `)
         })
     })
 }
