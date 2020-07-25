@@ -3,7 +3,8 @@ let files = {
         miembros: '1zHcxzKaOuvDb6UcumonlAnftDk8zstGN0X5nq3rtaxY'
     },
     eventos: {
-        calendario: 'Y3RybGFsdHRlY0BnbWFpbC5jb20'
+        // calendario: 'Y3RybGFsdHRlY0BnbWFpbC5jb20',
+        calendario: 'c_2uj0cckrh1eicbsbqkannojso4%40group.calendar.google.com'
     },
     contenido: {
         posts: '1LvOiUOBqpv8YLyQmmsKb3d29_H0z3aXYSgZEnbbotx8'
@@ -38,7 +39,7 @@ app.get('/grupoestudiantil/miembrosybits/bits', async (req, res)=>{
 })
 
 app.get('/eventos/calendario', async (req, res)=>{
-    let data = await calendar();
+    let data = await calendar(files.eventos.calendario);
     res.json(data.VCALENDAR[0].VEVENT)
 })
 
