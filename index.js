@@ -46,9 +46,9 @@ app.get('/contenido/posts', async (req, res)=>{
     let data = await sheets({id: files.contenido.posts});
     let posts = data.rows.map(post=>({
         ...post, 
-        url: 'https://ctrl-alt-tec.herokuapp.com/contenido/posts/'+slug
+        url: 'https://ctrl-alt-tec.herokuapp.com/contenido/posts/'+post.slug
     }));
-    res.json(posts)
+    res.json(posts);
 })
 
 app.get('/contenido/posts/:post', async (req, res)=>{
