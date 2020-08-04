@@ -12,6 +12,9 @@ let files = {
     colab: {
         quanta: {
             blog: '1E6rBa4F5gRIvT3Bw6uAgNC7pJtVs9jX30MvymE1iJ-g'
+        },
+        figura: {
+            blog: '1YgXB2NJ_JrmiEcHGnMkn6ElO3bCa4JCld3xwjPh5ldw'
         }
     }
 }
@@ -87,7 +90,27 @@ app.get('/colab/quanta/blog/:post', async (req, res)=>{
         res.set({ 'content-type': 'text/html; charset=utf-8' });
         res.end(file)
     } else {
-        res.end("4olk")
+        res.end("404")
+    }
+})
+app.get('/colab/figura/blog', async (req, res)=>{
+    let data = await sheets({id: files.colab.figura.blog});
+    let posts = data.rows.map(post=>({
+        ...post, 
+        url: 'https://ctrl-alt-tec.herokuapp.com/colab/figura/blog/'+post.slug
+    }));
+    res.json(posts);
+})
+
+app.get('/colab/figura/blog/:post', async (req, res)=>{
+    let data = await sheets({id: files.colab.figura.blog});
+    let post = data.rows.find(l=>l.slug===req.params.post);
+    if(post!=undefined){
+        let file = await docs(post.id)
+        res.set({ 'content-type': 'text/html; charset=utf-8' });
+        res.end(file)
+    } else {
+        res.end("404")
     }
 })
 
