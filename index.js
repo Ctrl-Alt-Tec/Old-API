@@ -29,6 +29,14 @@ const calendar = require('./calendar');
 const docs = require('./docs');
 let app = express();
 
+// Allow Cross-Origin Requests for all domains
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // All
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.get('/', (req, res)=>{
     res.end(`
         <html>
