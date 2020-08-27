@@ -15,6 +15,9 @@ let files = {
         },
         figura: {
             blog: '1YgXB2NJ_JrmiEcHGnMkn6ElO3bCa4JCld3xwjPh5ldw'
+        },
+        saprepa: {
+            anuario: '1mjU4FDnt37d07tbGj8qYCVRuufsNol-nILgWo9WO9nc'
         }
     }
 }
@@ -73,6 +76,12 @@ app.get('/contenido/posts/:post', async (req, res)=>{
 })
 
 
+app.get('/colab/saprepa/anuario', async(req, res)=>{
+    let data = await sheets({id: files.colab.saprepa.anuario});
+    res.json(data);
+})
+
+
 app.get('/colab/quanta/blog', async (req, res)=>{
     let data = await sheets({id: files.colab.quanta.blog});
     let posts = data.rows.map(post=>({
@@ -113,6 +122,9 @@ app.get('/colab/figura/blog/:post', async (req, res)=>{
         res.end("404")
     }
 })
+
+
+
 
 app.listen((process.env.PORT || 3000), function () {
     console.log('Example app listening on port' + (process.env.PORT || 3000));
