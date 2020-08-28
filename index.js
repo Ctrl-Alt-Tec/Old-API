@@ -86,7 +86,7 @@ app.get('/contenido/posts/:post', async (req, res)=>{
 
 app.get('/colab/saprepa/anuario', async(req, res)=>{
     let data = await sheets({id: files.colab.saprepa.anuario});
-    res.json(data);
+    res.json(data.rows);
 })
 
 
