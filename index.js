@@ -88,12 +88,8 @@ app.get('/colab/saprepa/anuario/ago2020', async(req, res)=>{
     let data = await sheets({id: files.colab.saprepa.anuario});
     let data_fix = data.rows.map(l=>({
         ...l, 
-        fotoURL: `https://drive.google.com/uc?export=view&id=${ l.foto.split('/')[5] }`
+        fotoURL: `https://drive.google.com/uc?export=view&id=${ l.foto.split('=')[1] }`
     }))
-    // let data_fix = {
-    //     ...data.rows, 
-    //     fotoURL: `https://drive.google.com/uc?export=view&id=${ data.rows.foto.split('=')[1] }`
-    // }
     res.json(data_fix);
 })
 
