@@ -84,7 +84,7 @@ app.get('/contenido/posts/:post', async (req, res)=>{
 })
 
 
-app.get('/colab/saprepa/anuario/ag02020', async(req, res)=>{
+app.get('/colab/saprepa/anuario/ago2020', async(req, res)=>{
     let data = await sheets({id: files.colab.saprepa.anuario});
     let data_fix = {
         ...data.rows, 
