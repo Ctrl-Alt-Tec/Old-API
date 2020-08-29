@@ -84,9 +84,13 @@ app.get('/contenido/posts/:post', async (req, res)=>{
 })
 
 
-app.get('/colab/saprepa/anuario', async(req, res)=>{
+app.get('/colab/saprepa/anuario/ag02020', async(req, res)=>{
     let data = await sheets({id: files.colab.saprepa.anuario});
-    res.json(data.rows);
+    let data_fix = {
+        ...data.rows, 
+        fotoURL: `https://drive.google.com/uc?export=view&id=${ data.rows.foto.split('=')[1] }`
+    }
+    res.json(data_fix);
 })
 
 
