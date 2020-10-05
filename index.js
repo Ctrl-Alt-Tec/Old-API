@@ -19,14 +19,17 @@ const docs = require('./services/docs');
 let app = express();
 
 
-var saprepa = require('./routes/saprepa');
+var saprepa = require('./colabs/saprepa');
 app.use('/colab/saprepa', saprepa);
 
-var figura = require('./routes/figura');
+var figura = require('./colabs/figura');
 app.use('/colab/figura', figura);
 
-var quanta = require('./routes/quanta');
+var quanta = require('./colabs/quanta');
 app.use('/colab/quanta', quanta);
+
+var redirects = require('./routes/r')
+app.use('/r', redirects);
 
 
 // Allow Cross-Origin Requests for all domains
